@@ -1,0 +1,118 @@
+body,
+html {
+  background-color: rgb(255, 250, 243);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.sticky-buttons {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff00;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.sticky-buttons a {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #ffffff00; /* Couleur de fond des boutons */
+  color: rgb(0, 0, 0); /* Couleur du texte */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.right-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.cursor {
+  position: absolute;
+  width: 40px; /* Taille du cercle */
+  height: 40px;
+  border-radius: 50%; /* Rendre l'élément circulaire */
+  border: 1px solid #3498db; /* Couleur bleu du cercle */
+  pointer-events: none; /* Empêche le cercle d'interférer avec les clics */
+  transition: transform 0.1s ease-in-out; /* Rendre le mouvement plus fluide */
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.intro {
+  height: 50%;
+}
+.intro-text {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 50vh; /* Utiliser toute la hauteur de la fenêtre */
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.typewriter {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgb(0, 0, 0);
+  max-width: max-content;
+  overflow: hidden; /* Cacher le texte qui dépasse */
+  border-right: 0.1em solid #333; /* Effet de curseur */
+  white-space: nowrap;
+  animation: typing 5s steps(40, end) 1s infinite, blink 0.75s step-end infinite;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  z-index: 4;
+}
+
+.background-typewriter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: rgba(255, 255, 255, 0); /* Couleur et transparence du texte de fond */
+  font-size: 100px;
+  font-style: italic;
+  z-index: 2;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(109, 109, 109);
+}
+
+.subtitle {
+  font-size: 15px;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent; /* Faire clignoter le curseur */
+  }
+}
