@@ -8,15 +8,11 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         // Quand l'élément devient visible (plus de 50%)
         entry.target.classList.add("visible");
-        entry.target.classList.remove("not-visible"); // Retirer la classe not-visible quand visible
-      } else {
-        // Quand l'élément devient moins visible (moins de 50%)
-        entry.target.classList.remove("visible"); // Retirer la classe visible
-        entry.target.classList.add("not-visible"); // Ajouter la classe not-visible pour shrink et blur
+        
       }
     });
   },
-  { threshold: 0.5 }
+  { threshold: [0.5] }
 ); // Observer les éléments à partir de 50% visibles
 
 // Observer chaque élément à animer

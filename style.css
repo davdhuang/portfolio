@@ -22,9 +22,11 @@ section {
 }
 
 .background {
-  position: fixed;
-  width: 2000px;
-  
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 
   mask-image: linear-gradient(
     to bottom,
@@ -39,11 +41,10 @@ section {
   top: 0;
   left: 0;
 
-  
   overflow: hidden;
   z-index: 1;
 
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-out;
 }
 
 #root {
@@ -64,27 +65,17 @@ section {
   padding: 0 !important;
 }
 
-.cursor {
-  position: fixed;
-  width: 40px; 
-  height: 40px;
-  border-radius: 50%; 
-  border: 1px solid #3498db; 
-  pointer-events: none;
-  top: -20px; 
-  left: -20px; 
-  z-index: 2;
-  
-}
-
 header {
   position: fixed; /* Makes the header stick to the top */
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1200px;
+
   background-color: #33333300; /* Dark background */
   color: white;
-  mix-blend-mode: difference;
+  will-change: transform; /* Improves performance */
   z-index: 1000;
   padding: 10px 0; /* Adds some space around the header */
 }
@@ -94,7 +85,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: auto;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -135,7 +126,6 @@ header {
   flex-direction: column;
   justify-content: center;
 
-  
   width: 100vw;
   text-align: center;
   padding: 0 20px;
@@ -151,45 +141,36 @@ header {
   width: 100%;
   color: white;
   mix-blend-mode: exclusion;
-  
+
   transition: color 0.5s ease-in-out;
   z-index: 2;
 }
 
 .scroll-arrow-container {
   position: absolute;
-  bottom: 50px;  /* Adjust this value to position the arrow above the scroll-guide element */
+  bottom: 50px; /* Adjust this value to position the arrow above the scroll-guide element */
   left: 50%;
-  
+
   z-index: 2;
-  width: 30px;  /* Arrow width */
-  height: 30px;  /* Arrow height */
+  width: 30px; /* Arrow width */
+  height: 30px; /* Arrow height */
 }
 
 /* Arrow styling */
 .scroll-arrow {
   width: 20px;
   height: 20px;
-  border-left: 3px solid white;  /* Left border of the triangle */
-  border-bottom: 3px solid white;  /* Bottom border of the triangle */
-  transform: rotate(45deg);  /* Rotate to make the arrow */
+  border-left: 3px solid white; /* Left border of the triangle */
+  border-bottom: 3px solid white; /* Bottom border of the triangle */
+  transform: rotate(45deg); /* Rotate to make the arrow */
   animation: bounce 1.5s infinite; /* Add bounce animation */
 }
 
 /* Keyframes for the bounce animation */
 @keyframes bounce {
-  0% {
-    transform: translateY(0) rotate(-45deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(-45deg);  /* Move the arrow upwards */
-  }
-  100% {
-    transform: translateY(0) rotate(-45deg);
-  }
+  0%, 100% { transform: translateY(0) rotate(-45deg); }
+  50% { transform: translateY(-8px) rotate(-45deg); } 
 }
-
-
 
 .typewriter {
   display: flex;
@@ -198,14 +179,13 @@ header {
   flex-direction: column; /* Stack elements vertically */
   position: relative;
   font-size: 95px;
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", serif;
 }
 
 .typewriter p {
   font-size: 25px;
   margin-top: 25px;
-  font-family: 'poppins', sans-serif;
-  
+  font-family: "poppins", sans-serif;
 }
 .typewriter span {
   position: relative; /* Use Flexbox */
@@ -216,6 +196,7 @@ header {
   content: "David";
   color: white;
   animation: words 20s infinite;
+  
 }
 
 .typewriter span::after {
@@ -227,21 +208,22 @@ header {
   border-left: 2px solid white;
   right: -8px;
   animation: cursor 0.75s step-end infinite, typing 20s steps(8) infinite;
+  
   color: white;
 }
 
 .background-typewriter {
   position: absolute;
-  top: auto; /* Center vertically */
-  left: 50%; /* Center horizontally */
+  top: auto;
+  left: 50%;
   transform: translate(
     -50%,
     -40%
-  ); /* Offset the element by its own width/height to perfectly center it */
-  width: auto; /* Allow width to adjust automatically */
-  color: rgba(255, 255, 255, 0); /* Color with transparency */
+  ); 
+  width: auto;
+  color: rgba(255, 255, 255, 0);
   font-size: 175px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-style: italic;
   z-index: 2;
   -webkit-text-stroke-width: 1px;
@@ -250,23 +232,6 @@ header {
 }
 
 /* The typing effect */
-@keyframes words {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    width: 0;
-  }
-}
-
-/* The typewriter cursor effect */
-@keyframes cursor {
-  50% {
-    border-color: transparent; /* Make the cursor invisible */
-  }
-}
-
 @keyframes typing {
   10%,
   15%,
@@ -293,6 +258,15 @@ header {
   }
 }
 
+/* The typewriter cursor effect */
+@keyframes cursor {
+  50% {
+    border-color: transparent; /* Make the cursor invisible */
+  }
+}
+
+
+
 .about-container {
   display: flex;
   flex-direction: column; /* Centrer tout le contenu verticalement */
@@ -305,65 +279,144 @@ header {
 
 .about-container h2 {
   position: relative;
-  font-size: 250px;
+  font-size: clamp(200px, 100vw, 250px);
   margin-bottom: 20px;
   font-style: italic;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   color: rgba(255, 255, 255, 0);
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
-  opacity: 50%;
-  top: 200px;
+  -webkit-text-stroke-color: rgb(148, 148, 148);
+  
+  top: 15%;
   opacity: 0;
-  animation: fadeIn 1s ease-out forwards; /* Appliquer l'animation sans toucher à l'opacity */
+  animation: fadeIn 1s ease-out forwards;
   animation-delay: 0.3s;
 }
 
 .image-container {
-  width: 400px;
-  height: 550px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
   overflow: hidden;
   border-radius: 20px;
   position: relative;
-  
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .image-container img {
-  width: 400px;
-  height: auto;
+  width: 100%;
+  height: 75%;
+  object-position: center top;
   object-fit: cover;
   border-radius: 20px;
+  max-width: 100%;
+  will-change: transform;
 }
 
-  .presentation {
-    display: flex; /* Utiliser flexbox pour aligner l'image et le texte en ligne */
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    /* Le texte et l'image seront alignés à gauche */
-    gap: 100px; /* Ajouter un espace entre l'image et le texte */
-    width: 100%;
-    max-width: 1200px; /* Limiter la largeur maximale pour garder un design responsive */
-    margin-top: 20px;
-    padding: 20px;
-  }
-
-.presentation p {
+.presentation {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  font-size: 20px;
-  font-family: 'poppins', sans-serif;
-  color: white;
+  justify-content: center;
+  /* Le texte et l'image seront alignés à gauche */
+  gap: 25px ; /* Ajouter un espace entre l'image et le texte */
+  width: 100%;
+  max-width: 1200px; /* Limiter la largeur maximale pour garder un design responsive */
+  
+  padding: 20px;
+  z-index: 10;
+}
+
+.presentation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text p {
+  display: flex;
+  flex-direction: column;
+  font-size: auto;
+  font-family: "poppins", sans-serif;
+  color: rgb(214, 214, 214);
   text-align: left;
-  max-width: 500px;
+  height: auto;
+  max-width: 100%;
   margin-right: 20px;
+}
+.accroche {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.about-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 40px;
+  margin-top: 40px;
+  z-index: 10;
+}
+
+.about-buttons button{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color:  #e6f5ff00;
+  color: white;
+  font-family: "poppins", sans-serif;
+  font-size: 15px;
+  padding: 12px 20px;
+  width: 100%;
+  border: white solid 0.5px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-buttons button:hover {
+  background-color: #f3faff7a;
+  color: white;
+  border: white solid 1px;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column; /* Centrer tout le contenu verticalement */
+  justify-content: center; /* Centrer verticalement */
+  align-items: center; /* Centrer horizontalement */
+  height: 100vh; /* Utiliser toute la hauteur de la fenêtre */
+  padding: 20px;
+  width: 100%;
+}
+
+.projects-container h2 {
+  position: relative;
+  font-size: clamp(200px, 100vw, 250px);
+  margin-bottom: 20px;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+  color: rgba(255, 255, 255, 0);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(148, 148, 148);
+  
+  
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards; 
+  animation-delay: 0.3s;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(50px); /* Positionner l'élément plus bas au début */
+    transform: translateY(20px); 
   }
   to {
     opacity: 1;
@@ -371,35 +424,64 @@ header {
   }
 }
 
-@keyframes shrinkAndBlur {
-  from {
-    opacity: 1;
-    transform: translateY(0); /* L'élément est à sa taille normale */
-    filter: blur(0); /* Pas de flou */
-    transform: scale(1); /* Taille normale */
-  }
-  to {
-    opacity: 0;
-    transform: translateY(50px); /* Décalage vertical */
-    filter: blur(10px); /* Appliquer un flou */
-    transform: scale(0.8); /* Réduire la taille */
-  }
-}
-
-/* Class pour ajouter l'animation */
 .fade-in {
   opacity: 0;
-  transform: translateY(50px); /* Positionner l'élément plus bas au début */
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transform: translateY(20px); 
+  will-change: opacity, transform;
 }
 
-/* Appliquer la transition à l'élément quand il devient visible */
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-in.not-visible {
+
+@media (max-width: 600px) {
   
-  animation: shrinkAndBlur 0.5s forwards; /* Appliquer l'animation de shrink et blur */
+  body {
+    font-size: 14px; /* Réduis légèrement pour mobile */
+    overflow-y: auto;
+  }
+  .container {
+    width: 100%;
+    padding: 0 10px; /* Réduis le padding pour gagner de la place */
+  }
+  .typewriter {
+    font-size: clamp(70px, 8vw, 70px); /* Réduis la taille pour mobile */
+  }
+  .typewriter p {
+    font-size: clamp(20px, 2.5vw, 20px); /* Ajuste aussi le texte en dessous */
+  }
+  .background-typewriter {
+    font-size: clamp(100px, 8vw, 100px); /* Réduis la taille du texte en fond */
+  }
+  .about-container {
+    flex-direction: column;
+  }
+  .about-container h2,
+  .projects-container h2 {
+    font-size: clamp(100px, 12vw, 100px); /* Réduis la taille du titre */
+  }
+  
+  .presentation {
+    flex-direction: column; /* Passe en colonne sur mobile */
+    gap: 5px; /* Réduis l’espace entre éléments */
+  }
+  .text p {
+    text-align: justify;
+  }
+  .image-container img {
+    
+    max-width: 300px; /* Limite la taille max */
+  }
+  .header-container {
+    padding: 0 10px; /* Réduis le padding */
+  }
+  .nav-links {
+    gap: 10px; /* Réduis l’espace entre les liens */
+  }
+  .logo img {
+    width: 70px; /* Réduis la taille du logo */
+  }
 }
