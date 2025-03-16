@@ -272,7 +272,7 @@ header {
   flex-direction: column; /* Centrer tout le contenu verticalement */
   justify-content: center; /* Centrer verticalement */
   align-items: center; /* Centrer horizontalement */
-  height: 100vh; /* Utiliser toute la hauteur de la fenêtre */
+  height: auto; /* Utiliser toute la hauteur de la fenêtre */
   padding: 20px;
   width: 100%;
 }
@@ -392,26 +392,12 @@ header {
   flex-direction: column; /* Centrer tout le contenu verticalement */
   justify-content: center; /* Centrer verticalement */
   align-items: center; /* Centrer horizontalement */
-  height: 100vh; /* Utiliser toute la hauteur de la fenêtre */
+  height: auto; /* Utiliser toute la hauteur de la fenêtre */
   padding: 20px;
   width: 100%;
 }
 
-.projects-container h2 {
-  position: relative;
-  font-size: clamp(200px, 100vw, 250px);
-  margin-bottom: 20px;
-  font-style: italic;
-  font-family: "Times New Roman", Times, serif;
-  color: rgba(255, 255, 255, 0);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgb(148, 148, 148);
-  
-  
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards; 
-  animation-delay: 0.3s;
-}
+
 
 @keyframes fadeIn {
   from {
@@ -427,6 +413,7 @@ header {
 .fade-in {
   opacity: 0;
   transform: translateY(20px); 
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   will-change: opacity, transform;
 }
 
@@ -436,6 +423,303 @@ header {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+
+
+
+.project-h2 {
+  position: absolute;
+  font-size: clamp(200px, 100vw, 250px);
+  margin-bottom: 20px;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+  color: rgba(255, 255, 255, 0);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(148, 148, 148);
+  
+  
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.projects-grid{
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  
+  height: 100vh;
+  gap: 50px;
+  padding-top: 200px;
+  transition : 0.3s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+  flex-wrap: nowrap;
+  z-index: 1;
+  margin-bottom: 200px;
+
+}
+
+.project-container  {
+  position: relative;
+  width: 200px; /* Largeur de base */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #ffffff80;
+  transition: background-color 0.3s ease, width 0.3s ease;
+  margin: 0 -15px;
+  transform-origin: center;
+  overflow: hidden;
+  
+}
+
+.project-container-more {
+  position: relative;
+  width: 100px; /* Largeur de base */
+  padding: 15px;
+  border: 1px solid #dddddd49;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff11;
+  transition: background-color 0.3s ease, width 0.3s ease;
+  margin: 0 -15px;
+  transform-origin: center;
+  overflow: hidden;
+}
+
+/* Hover effect pour .project-container et .project-container-more */
+.project-container:hover  {
+  width: 350px; /* Largeur souhaitée au survol */
+  background-color: #ffffffe7;
+}
+.project-container-more:hover {
+  width: 175px; /* Largeur souhaitée au survol */
+  
+}
+.hidden-elements{
+  visibility: hidden;
+  
+}
+.project-container:hover .hidden-elements, .project-container-more:hover .hidden-elements{
+  visibility: visible;
+}
+
+.project-link-icon{
+  position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    width: 40px; 
+    height: 40px;
+    background-color: #0000001e;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    
+}
+.project-link-icon:hover {
+  background-color: #2929295b;
+}
+.project-link-icon-more {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+  flex-direction: column;
+  z-index: 10; /* Assurez-vous que l'icône est au-dessus d'autres éléments */
+}
+.project-link-more{
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+.project-link-icon-more:hover {
+  background-color: #a3a3a35b;
+  transform: scale(1.1);
+}
+
+.project-container-more p {
+  font-size: 1em;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.project-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+ 
+}
+
+.project-container img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.project-container h3 {
+  margin: 15px 0 10px;
+  font-size: 1.5em;
+ 
+}
+
+.project-container p {
+  font-size: 1em;
+  color: #555;
+ 
+}
+
+.project-link:hover {
+  background-color: #0057b300;
+}
+
+
+.footer {
+  background-color: #333; /* Couleur de fond sombre */
+  color: white; /* Texte en blanc */
+  padding: 20px 0; /* Espace autour du footer */
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Partie gauche du footer */
+.footer-left {
+  text-align: center;
+  position: absolute; /* Positionne en bas au centre */
+  bottom: -10px; /* Décalage vers le bas */
+  left: 49%;
+  transform: translateX(-50%); /* Centre exactement l'élément horizontalement */
+}
+
+.footer-left p {
+  font-size: 10px;
+  margin: 0;
+}
+
+/* Partie centrale avec les liens */
+.footer-center {
+  flex: 2;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.footer-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  
+  margin: 0 15px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #3498db; /* Change la couleur des liens au survol */
+}
+
+/* Partie droite avec les icônes sociales */
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-socials .socials {
+  font-size: 20px;
+}
+
+.footer-socials p {
+  font-size: 15px;
+}
+.social-icon {
+  color: white;
+  font-size: 20px;
+  margin-left: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #3498db; /* Change la couleur des icônes sociales au survol */
+}
+
+.back-to-top-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: 20px; /* Positionné en bas du footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 48%;
+  color: white;
+  background-color: #ffffff1e;
+  font-size: 20px;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  transform-origin: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* Effet du bouton au survol */
+.back-to-top-btn:hover {
+   /* Change la couleur du bouton au survol */
+  transform: scale(1.1); /* Légère remontée lors du survol */
+}
 
 @media (max-width: 600px) {
   
@@ -469,7 +753,7 @@ header {
     gap: 5px; /* Réduis l’espace entre éléments */
   }
   .text p {
-    text-align: justify;
+    text-align: center;
   }
   .image-container img {
     
@@ -483,5 +767,62 @@ header {
   }
   .logo img {
     width: 70px; /* Réduis la taille du logo */
+  }
+
+  .project-container, .project-container-more {
+    max-width: 100%;
+    margin: 10px auto;
+}
+
+  .projects-grid {
+    padding-top: 100px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    flex-wrap: wrap;
+    overflow-x: hidden;
+  }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .footer-left p {
+    display: flex;
+  }
+
+  .footer-links li {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5;
+    margin-bottom: 15px;
+    
+  }
+
+  .social-icon {
+    font-size: 24px;
+    margin: 5px 10px;
+  }
+
+  .back-to-top-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 47%;
+    margin-bottom: 20px;
   }
 }
