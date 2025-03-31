@@ -17,11 +17,11 @@
     </div>
     <header>
       <div class="header-container">
-        <a href="#home" class="logo">
+        <a href="/" class="logo">
           <img src="images/logodh.png" alt="Logo" />
         </a>
         <nav class="nav-links">
-          <a href="#home">Home</a>
+          <a href="/">Home</a>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
@@ -35,10 +35,8 @@
         <script>
           window.addEventListener('scroll', function() {
             const background = document.querySelector('.background');
-            const scrollY = window.scrollY; // Position du scroll en Y
-            const opacity = 1 - Math.min(scrollY / 850, 1); // L'opacité diminue progressivement au fur et à mesure que l'utilisateur descend
-        
-            // Appliquer la nouvelle opacité
+            const scrollY = window.scrollY;
+            const opacity = 1 - Math.min(scrollY / 850, 1);
             background.style.opacity = opacity;
           });
         </script>
@@ -158,32 +156,41 @@
     <script src="projectContainerBehaviour.js"></script>
   </body>
   
-  <footer class="footer">
-    <div class="footer-container">
-      
-      <div class="footer-left">
-        <p>&copy; 2025 Huang David. Tous droits réservés.</p>
-      </div>
-      <div class="footer-center">
-        <ul class="footer-links">
-          <li><a href="#about">À propos</a></li>
-          <li><a href="#projects">Projets</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-        <div class="footer-socials">
-        <p class="socials"> Me retrouver sur :</p>
-        <p>huangdavid59@gmail.com</p>
-        <div class="footer-right">
-        
-        <a href="#" class="social-icon">F</a>
-        <a href="#" class="social-icon">T</a>
-        <a href="#" class="social-icon">I</a>
+  <footer id="contact" class="footer">
+    <div class="footer-content">
+        <div class="contact-section">
+            <h2>CONTACTEZ-MOI</h2>
+            <p>Venez discuter de vos projets avec moi !<br>Je suis toujours curieux à l'idée de partager votre vision.</p>
         </div>
-        <a href="#" class="back-to-top-btn" id="back-to-top">↑</a>
-      </div>
-      
+        <div class="contact-info-socials">
+          <div class="contact-info">
+            <p>huangdavid58@gmail.com</p>
+            <p>(+33) 7 82 40 64 48</p>
+        </div>
+
+        <div class="social-links">
+            <a href="[lien-github]" target="_blank">Github</a>
+            <a href="[lien-linkedin]" target="_blank">LinkedIn</a>
+            <a href="[lien-instagram]" target="_blank">Instagram</a>
+        </div>
+        </div>
+        
     </div>
-  </footer>
+    <div class="footer-logo">
+    
+  </div>
+    <div class="copyright">
+        <p>&copy;2025</p>
+        <div class="center-text-logo">
+          <a href="/" class="logo-footer">
+            <img src="images/logodh.png" alt="Logo" />
+            
+          </a>
+          <p>designé par David Huang.</p>
+        </div>
+        
+        <p>Tous droits réservés.</p>
+    </div>
+</footer>
   
 </html>

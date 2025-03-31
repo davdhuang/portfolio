@@ -596,129 +596,105 @@ header {
 }
 
 
+/* Footer global */
 .footer {
-  background-color: #333; /* Couleur de fond sombre */
-  color: white; /* Texte en blanc */
-  padding: 20px 0; /* Espace autour du footer */
-  position: relative;
-  width: 100%;
-  bottom: 0;
-}
-
-.footer-container {
-  position: relative;
+  background-color: #e9e9e9; /* Couleur de fond du footer */
+  color: rgb(0, 0, 0);
+  padding: 50px;
+  padding-top: 100px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Partie gauche du footer */
-.footer-left {
-  text-align: center;
-  position: absolute; /* Positionne en bas au centre */
-  bottom: -10px; /* Décalage vers le bas */
-  left: 49%;
-  transform: translateX(-50%); /* Centre exactement l'élément horizontalement */
-}
-
-.footer-left p {
-  font-size: 10px;
-  margin: 0;
-}
-
-/* Partie centrale avec les liens */
-.footer-center {
-  flex: 2;
-  text-align: left;
-  margin-left: 20px;
-}
-
-.footer-links {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
+  flex-direction: column;
+  justify-content: space-between; /* Espace entre le contenu principal et le copyright */
+  height: 100%; /* Prendre toute la hauteur du conteneur */
+  font-family: 'poppins' sans-serif;
   
-  margin: 0 15px;
 }
 
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s ease;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%; /* Prendre toute la largeur du footer */
 }
 
-.footer-links a:hover {
-  color: #3498db; /* Change la couleur des liens au survol */
-}
-
-/* Partie droite avec les icônes sociales */
-.footer-right {
+.contact-section {
   flex: 1;
+  max-width: 600px;
+}
+
+.contact-section h2 {
+  font-size: 3rem; /* Plus gros */
+  margin-bottom: 10px;
+  text-align: left; /* Aligné à gauche */
+}
+
+.contact-section p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Alignement à droite pour les informations de contact et les liens sociaux */
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; /* Aligne à droite */
+  text-align: right;
+  gap: 50px; /* Texte aligné à droite */
+}
+.contact-info{
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
   text-align: right;
 }
-.footer-socials {
+
+.contact-info p,
+.social-links a {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  
+}
+
+/* Style des liens sociaux */
+.social-links a {
+  text-decoration: none;
+  color: #000000;
+  margin-right: 10px;
+  transition: color 0.3s;
+  margin-top: 80px;
+}
+
+.social-links a:hover {
+  color: #737dff; /* Par exemple, couleur au survol (vert pour Spotify) */
+}
+
+/* Copyright en bas */
+
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  margin-bottom: 0;
+  width: 100%;
+}
+.center-text-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  
 }
 
-.footer-socials .socials {
-  font-size: 20px;
+.footer-logo {
+margin-top: 20px;
 }
-
-.footer-socials p {
-  font-size: 15px;
-}
-.social-icon {
-  color: white;
-  font-size: 20px;
-  margin-left: 15px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-  color: #3498db; /* Change la couleur des icônes sociales au survol */
-}
-
-.back-to-top-btn {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  bottom: 20px; /* Positionné en bas du footer */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 48%;
-  color: white;
-  background-color: #ffffff1e;
-  font-size: 20px;
-  border: none;
-  padding: 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  text-decoration: none;
-  transform-origin: center;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 5;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-
-
-
-/* Effet du bouton au survol */
-.back-to-top-btn:hover {
-   /* Change la couleur du bouton au survol */
-  transform: scale(1.1); /* Légère remontée lors du survol */
+.logo-footer img {
+  width: 100px;
+  height: auto;
+  
 }
 
 @media (max-width: 600px) {
